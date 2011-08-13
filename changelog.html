@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title> kOrcGames | RTS Engine Changelog </title>
+		<link rel="stylesheet" type="text/css" href="../korchome.css" />
+	</head>
+	<body>
+	<h1> <a href="http://www.korcgames.com">kOrcGames</a> </h1>
+	<h2> <a href="game.html">Return to the game</a></h2>
+	<h2> kOrcEngine HTML5 RTS Engine Development Log <g:plusone></g:plusone></h2>
+		<!--  Place this tag after the last plusone tag -->
+		<script type="text/javascript">
+		  (function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'http://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		  })();
+		</script>
+	<h3>===20 June 2011===<br>---Project Start---</h3>
+	<p class="lorem">
+		* Objective: develop an RTS game engine meant to run in browsers. <br>
+		* This engine is built around the vision of the game inspiration in this design document: <a href="http://www.korcgames.com/blog/?p=199">Admiral Zala</a> <br>
+		* As such, this engine is meant to allow flexibility of mechanics, and just wrap away all the quintessential RTS ui and gameplay elements<br>
+		* The engine will be tailored to make the above game, while keeping in mind the needs of a generic RTS game. 
+		* If you want me to keep another flexibility in mind, <a href="mailto:keerthiko@gmail.com?Subject=[RTS%20Engine%20Request]">contact me!</a><br>
+	</p>
+	<h3>===03 July 2011===</h3>
+	<p class="lorem">
+		* Defined basic game class: custom event handlers, game loop setup, and canvas constant setup<br>
+		* Created unit class: capable of moving to target point, accelerating, decelerating, custom selection with selection-circles<br>
+		* Listeners for mouse actions<br>
+	</p>
+	<h3>===10 July 2011===</h3>
+	<p class="lorem">
+		* Drag-select, shift-select units<br>
+		* UI class that can draw map-grid<br>
+		* Grid-based unit positioning as a set-up for pathing algorithms<br>
+		* Map panning, including keyboard listeners<br>
+		* Standard RTS controls implemented: removed context menu; right-click->move<br>
+	</p>
+	<h3>===14 July 2011===</h3>
+	<p class="lorem">
+		* Way-points (shift-queued movements)<br>
+		* Path drawings: lines from current position to destination(s) (also as setup for pathing)<br>
+		* Path-updating framework in place for unit avoidance using circumventing waypoints<br>
+	</p>
+	<h3>===19 July 2011===</h3>
+	<p class="lorem">
+		* Pathing adjusts its destination if another unit occupies it before it starts or before it reaches <br>
+		* Group pathing for more than one unit makes nominal sense if the units arrive at sufficiently different times <br>
+		Process:<br>
+			Check if the opening waypoints are "pathed" waypoints, ie, from a previous path update <br>
+				If true, then just check the final destination occupancy<br>
+					If unoccupied, return<br>
+					If occupied, find closest spot that is open<br>
+				Else, replot path to the destination<br>
+		Currently Known Bugs:<br>
+			* If selected unit is right beside target location, and it is occupied, sometimes units stack<br>
+			* If units are grouped, there is no squad management, and they will stack if all units arrive
+				at almost the same time<br>
+	</p>
+	<h3>===26 July 2011===</h3>
+	<p class="lorem">
+		* Units can now attack each other <br>
+		* When attacking, units launch bullets, which can be drawn in any custom fashion, but deal damage when they reach <br>
+		* Attacked and destroyed units will be removed from the game entirely. There's no system for tracking these stats yet <br>
+		* When viewed in a browser larger than the game space, the map now clips graphically and functionally <br>
+	</p>
+	<h3>===28 July 2011===</h3>
+	<p class="lorem">
+		* Added a Google <g:plusone></g:plusone> button to both this changelog as well as the demo <a href="game.html">game</a>!<br>
+		* Fixed corner cases on pathing so that the units don't just completely stop in their tracks near the edges/corners
+		* 
+	</p>
+	</body>
+</html>
