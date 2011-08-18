@@ -1,5 +1,13 @@
 function define_constants() {
-	// WORLD CONSTANTS
+	// Engine Constants
+	// Action codes
+	ATTACK = 0;
+	MOVE = 1;
+	ATTACK_MOVE = 2;
+	FOLLOW = 3;
+	PATROL = 4;
+
+	// GAME CONSTANTS
 	MWIDTH = 1440;
 	MHEIGHT = 800;
 	SCROLL_SPEED = 10;	//0-10
@@ -17,5 +25,6 @@ function define_constants() {
 	// Enemy ships
 	ecapship = new Unit(23, 4, 1);
 	esupportship_1 = new Unit(22, 2, 1);
-	esupportship_2 = new Unit(24, 2, 1);	
+	esupportship_2 = new Unit(24, 2, 1);
+	
 }
