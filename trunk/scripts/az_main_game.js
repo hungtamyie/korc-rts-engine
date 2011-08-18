@@ -1,27 +1,6 @@
 // Custom Game code:
 
-// Update the occupancy grid
-function update_occupancy()
-{
-	// TODO: First reset everything to map file
-	// Current design: Empty everything
-	for (var i = 0; i < ui.grid_cols; i++)
-	{
-		Game.o_map[i] = new Array();
-		for (var j = 0; j < ui.grid_rows; j ++)
-			Game.o_map[i][j] = 0;
-	}
-	// Place all the units in the grid
-	for (var i in Game.units)
-	{
-		var unit = Game.units[i];
-		//console.log(unit.X);
-		var col = Math.floor(unit.X/GRID_SIZE);
-		var row = Math.floor(unit.Y/GRID_SIZE);
-		// Give ships a weight of 10
-		Game.o_map[col][row] = 10;
-	}
-}
+
 // Return whether a given grid spot (not x,y) is empty
 function is_map_empty(col, row)
 {
@@ -210,10 +189,4 @@ function keyPress(e)
 	if (keyCode == 40 && Y_0+HEIGHT < MHEIGHT)
 		Y_0 += SCROLL_SPEED;
 	
-}
-
-function mouseScroll()
-{
-	//draw();
-	CTX.fillText("Scrolled", 50, 150);	
 }

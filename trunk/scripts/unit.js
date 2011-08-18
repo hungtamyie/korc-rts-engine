@@ -1,3 +1,7 @@
+/*
+Defines the basic unit class in 
+*/
+
 function Unit(xx, yy, oo) {
 	// Position
 	this.X = cell_coords(xx,yy)[0];
