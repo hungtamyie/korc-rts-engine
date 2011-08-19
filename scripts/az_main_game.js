@@ -1,12 +1,5 @@
 // Custom Game code:
 
-
-// Return whether a given grid spot (not x,y) is empty
-function is_map_empty(col, row)
-{
-	return (Game.o_map[col][row] == 0);
-}
-
 // Return the grid indices (not x,y) from a coordinate (x,y)
 function get_cell(_x, _y)
 {
@@ -36,8 +29,9 @@ function snap2grid(_x, _y)
 function init_game()
 {
 	define_constants();
-	make_ui();
-	make_occupancy();
+	ui = new UI();
+	omap = new o_map();
+	
 }
 
 function custom_update()
@@ -48,7 +42,7 @@ function custom_update()
 		unit = Game.units[i];
 		unit.update();
 	}
-	update_occupancy();
+	omap.update();
 }
 function custom_draw()
 {
@@ -59,6 +53,7 @@ function custom_draw()
 		unit.draw();
 	}
 }
+
 // Custom Event Handlers
 function mouseMove(e)
 {
@@ -100,7 +95,7 @@ function mouseUp(e)
 		var u_y = Game.mu_y + Y_0;
 		var targetzone = get_cell(u_x, u_y);
 		// If there is a unit ...
-		if (!is_map_empty(targetzone[0], targetzone[1]))
+		if (!omap.is_empty(targetzone[0], targetzone[1]))
 		{
 			for (var i in Game.units)
 			{

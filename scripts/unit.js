@@ -118,7 +118,7 @@ function Unit(xx, yy, oo) {
 			}
 		}
 		// If you are following a pre-evaluated path and the destination is clear		
-		if (pathed && is_map_empty(pos[0], pos[1]))
+		if (pathed && omap.is_empty(pos[0], pos[1]))
 			return false;
 
 		// Repathing algorithm from here
@@ -132,8 +132,8 @@ function Unit(xx, yy, oo) {
 		for (var i = ilims[0]; i < ilims[1]; i++)
 			for (var j = jlims[0]; j < jlims[1]; j++)
 			{
+				if (!(i == 0 && j == 0) && omap.is_empty(substitute[0], substitute[1]))
 				var substitute = [pos[0] + i, pos[1] + j];
-				if (!(i == 0 && j == 0) && is_map_empty(substitute[0], substitute[1]))
 				{
 					var sub_xy = cell_coords(substitute[0], substitute[1]);
 					var sub_dist = getDistance(X, Y, sub_xy[0], sub_xy[1]);
